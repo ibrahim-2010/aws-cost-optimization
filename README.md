@@ -279,15 +279,7 @@ Every push to `main` that touches `terraform/` triggers:
 
 ---
 
-## Future Improvements
 
-- [ ] Add Slack integration for budget and anomaly alerts via SNS
-- [ ] Build QuickSight dashboard powered by CUR data in S3/Athena
-- [ ] Implement SCP-based tag enforcement at the AWS Organizations level
-- [ ] Add ECS/Fargate scheduled scaling for containerized workloads
-- [ ] Create a cost-per-customer unit economics dashboard
-- [ ] Add Terraform remote state with S3 backend and DynamoDB locking
-- [ ] Add `force_destroy = true` to the Config S3 bucket for cleaner teardowns
 
 ---
 
