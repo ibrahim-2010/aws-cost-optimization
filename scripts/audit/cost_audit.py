@@ -7,7 +7,7 @@ Pulls spend data from Cost Explorer and identifies top cost drivers.
 import boto3
 import json
 import argparse
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 
 def get_cost_by_service(ce_client, start_date, end_date):
@@ -38,8 +38,8 @@ def get_idle_resources(ec2_client, cw_client):
                     Namespace="AWS/EC2",
                     MetricName="CPUUtilization",
                     Dimensions=[{"Name": "InstanceId", "Value": instance_id}],
-                    StartTime=datetime.utcnow() - timedelta(days=14),
-                    EndTime=datetime.utcnow(),
+                    StartTime=datetime.now(tz=timezone.utc) - timedelta(days=14),
+                    EndTime=datetime.now(tz=timezone.utc),
                     Period=86400,
                     Statistics=["Average"],
                 )
@@ -101,8 +101,8 @@ def main():
     ec2 = session.client("ec2")
     cw = session.client("cloudwatch")
 
-    end_date = datetime.utcnow().strftime("%Y-%m-%d")
-    start_date = (datetime.utcnow() - timedelta(days=args.months * 30)).strftime(
+    end_date = datetime.now(tz=timezone.utc).strftime("%Y-%m-%d")
+    start_date = (datetime.now(tz=timezone.utc) - timedelta(days=args.months * 30)).strftime(
         "%Y-%m-%d"
     )
 
