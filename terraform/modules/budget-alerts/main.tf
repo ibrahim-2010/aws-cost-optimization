@@ -47,7 +47,7 @@ resource "aws_ce_anomaly_subscription" "alert" {
     }
   }
 
-  frequency    = "IMMEDIATE"
+  frequency    = "DAILY"
   monitor_arn_list = [aws_ce_anomaly_monitor.service_monitor.arn]
 
   subscriber {

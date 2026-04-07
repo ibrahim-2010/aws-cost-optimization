@@ -12,11 +12,3 @@ output "shutdown_lambda_arn" {
   description = "ARN of the shutdown Lambda function"
   value       = module.scheduled_shutdown.shutdown_lambda_arn
 }
-
-output "budget_name" {
-  value = aws_budgets_budget.monthly_cost.name
-}
-
-output "shutdown_lambda_arn" {
-  value = aws_lambda_function.shutdown.arn
-}
