@@ -39,12 +39,12 @@ resource "aws_s3_bucket_policy" "config_bucket_policy" {
           "s3:x-amz-acl" = "bucket-owner-full-control"
         }
       }
-    },
-    {
-      Effect    = "Allow"
-      Principal = { Service = "config.amazonaws.com" }
-      Action    = "s3:GetBucketAcl"
-      Resource  = aws_s3_bucket.config_bucket.arn
+      },
+      {
+        Effect    = "Allow"
+        Principal = { Service = "config.amazonaws.com" }
+        Action    = "s3:GetBucketAcl"
+        Resource  = aws_s3_bucket.config_bucket.arn
     }]
   })
 }

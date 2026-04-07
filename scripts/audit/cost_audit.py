@@ -5,7 +5,6 @@ Pulls spend data from Cost Explorer and identifies top cost drivers.
 """
 
 import boto3
-import json
 import argparse
 from datetime import datetime, timedelta, timezone
 
